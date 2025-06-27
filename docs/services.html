@@ -124,7 +124,145 @@
             </div>
         </section>
     </main>
-
+    <!-- Floating Sphere Chatbot -->
+    <div class="chatbot-sphere-container">
+        <div class="chatbot-sphere">
+        <i class="fas fa-comment-dots"></i>
+        </div>
+        <div class="chatbot-window">
+        <div class="chatbot-header">
+            <h3>Nexus Assistant</h3>
+            <button class="chatbot-close">&times;</button>
+        </div>
+        <div class="chatbot-messages">
+            <div class="chatbot-message bot">
+            <p>Hello! How can I help you today?</p>
+            </div>
+        </div>
+        <div class="chatbot-quick-questions">
+            <button class="quick-question" data-response="services">Services offered?</button>
+            <button class="quick-question" data-response="pricing">Pricing?</button>
+            <button class="quick-question" data-response="contact">Contact support</button>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" placeholder="Type your message..." class="chatbot-text-input">
+            <button class="chatbot-send"><i class="fas fa-paper-plane"></i></button>
+        </div>
+        </div>
+    </div>
+    <script> // Chatbot
+document.addEventListener('DOMContentLoaded', function() {
+    const chatbot = {
+        initialized: false,
+        init: function() {
+            if (this.initialized) return;
+            this.initialized = true;
+            
+            // DOM elements
+            this.sphere = document.querySelector('.chatbot-sphere');
+            this.chatWindow = document.querySelector('.chatbot-window');
+            this.messagesContainer = document.querySelector('.chatbot-messages');
+            this.inputField = document.querySelector('.chatbot-text-input');
+            this.sendButton = document.querySelector('.chatbot-send');
+            this.sphereContainer = document.querySelector('.chatbot-sphere-container');
+            
+            // Initialize
+            this.setupEventListeners();
+            this.showWelcomeMessage();
+        },
+        
+        setupEventListeners: function() {
+            // Sphere toggle
+            this.sphere.addEventListener('click', this.toggleChat.bind(this));
+            
+            // Quick questions (with event delegation)
+            document.querySelector('.chatbot-quick-questions').addEventListener('click', (e) => {
+                if (e.target.classList.contains('quick-question')) {
+                    this.handleQuickQuestion(e.target.textContent);
+                    e.target.disabled = true; // Disable button after click
+                    setTimeout(() => e.target.disabled = false, 1000);
+                }
+            });
+            
+            // Message submission
+            this.sendButton.addEventListener('click', this.handleUserMessage.bind(this));
+            this.inputField.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') this.handleUserMessage();
+            });
+            // Close button
+            const closeBtn = document.querySelector('.chatbot-close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', () => {
+                    this.sphereContainer.classList.remove('open');
+                });
+            }
+        },
+        
+        toggleChat: function() {
+            this.sphereContainer.classList.toggle('open');
+        },
+        
+        showWelcomeMessage: function() {
+            this.addMessage("Hello! I'm your Nexus Digital assistant. How can I help you today?", false);
+        },
+        
+        addMessage: function(text, isUser) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('chatbot-message', isUser ? 'user' : 'bot');
+            messageDiv.innerHTML = `<p>${text}</p>`;
+            this.messagesContainer.appendChild(messageDiv);
+            this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
+        },
+        
+        handleQuickQuestion: function(question) {
+            this.addMessage(question, true);
+            this.processQuestion(question.toLowerCase());
+        },
+        
+        handleUserMessage: function() {
+            const message = this.inputField.value.trim();
+            if (message) {
+                this.addMessage(message, true);
+                this.inputField.value = '';
+                this.processQuestion(message.toLowerCase());
+            }
+        },
+        
+        processQuestion: function(question) {
+            // Response database
+            const responses = {
+                "services": "We offer comprehensive digital marketing services including:<br><br>" +
+                           "• SEO Optimization<br>" +
+                           "• PPC Advertising<br>" +
+                           "• Social Media Marketing<br>" +
+                           "• Content Marketing<br>" +
+                           "• Email Marketing<br>" +
+                           "• Analytics & Reporting<br><br>" +
+                           "Visit our Services page for details!",
+                "pricing": "Our pricing is customized based on your specific needs. " +
+                          "We offer flexible packages to suit different budgets. " +
+                          "Contact us for a free consultation and quote!",
+                "contact": "You can reach our support team:<br><br>" +
+                           "• Email: support@nexusdigital.com<br>" +
+                           "• Phone: +1 (555) 123-4567<br>" +
+                           "• Hours: Mon-Fri, 9am-6pm EST",
+                "default": "I'm still learning! For more complex questions, please email us at info@nexusdigital.com"
+            };
+            
+            // Determine response
+            let response = responses.default;
+            if (question.includes('service') || question.includes('offer')) response = responses.services;
+            else if (question.includes('pric') || question.includes('cost')) response = responses.pricing;
+            else if (question.includes('contact') || question.includes('support')) response = responses.contact;
+            
+            // Simulate typing delay
+            setTimeout(() => this.addMessage(response, false), 800);
+        }
+    };
+    
+    // Initialize chatbot
+    chatbot.init();
+});</script>
     <!-- Footer -->
     <footer id="footer">
         <div class="footer-content">
