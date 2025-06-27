@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Digital | Modern Marketing Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header/Navbar -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">Nexus<span>Digital</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <!-- Default: Hidden initially -->
+<div id="user-nav" class="user-info" style="display: none;">
+    <div class="user-avatar">
+      <img src="https://i.pravatar.cc/40" alt="User Avatar" />
+      <span id="username"></span>
+      <div class="dropdown-menu">
+        <a href="#" id="logout">Logout</a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Shown if not logged in -->
+  <a href="login.html" id="login-btn" class="cta-button">Get Started</a>
+  
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title"><span>Elevate Your</span> <span class="hero-animate">Digital Presence</span></h1>
+            <p class="hero-subtitle">We craft data-driven marketing strategies that deliver measurable results and accelerate your business growth.</p>
+            <div class="hero-buttons">
+                <a href="#services" class="cta-button">Explore Services</a>
+                <button class="secondary-button">Learn More</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="circle-animation"></div>
+             </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <h2 class="section-title"> <span>Our</span><span class="hero-animate"> Services</span></h2>
+            <p class="section-subtitle">Comprehensive digital marketing solutions tailored to your business needs</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-bg" style="background-image: url('SEO.jpg')"></div>
+                <h3>SEO Optimization</h3>
+                <p>Boost your organic traffic with our proven SEO strategies and technical expertise.</p>
+                <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card">
+                <div class="service-bg" style="background-image: url('PPC.jpg')"></div>
+                <h3>PPC Advertising</h3>
+                <p>Maximize ROI with targeted pay-per-click campaigns across all platforms.</p>
+                <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card">
+                <div class="service-bg" style="background-image: url('Social.jpg')"></div>
+                <h3>Social Media Marketing</h3>
+                <p>Build brand awareness and engagement through strategic social campaigns.</p>
+                <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card">
+                <div class="service-bg" style="background-image: url('Email.jpg')"></div>
+                <h3>Email Marketing</h3>
+                <p>Convert leads into customers with personalized, automated email sequences.</p>
+                <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card">
+                <div class="service-bg" style="background-image: url('Content.jpg')"></div>
+                <h3>Content Marketing</h3>
+                <p>Tell your brand story with compelling content that resonates with your audience.</p>
+                <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card">
+                <div class="service-bg" style="background-image: url('Analytics.jpg')"></div>
+                <h3>Analytics & Reporting</h3>
+                <p>Data-driven insights to measure performance and optimize your strategy.</p>
+                <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-image">
+            <img src="https://i0.wp.com/nonyindustries.com/wp-content/uploads/2022/09/about-us.gif" alt="About Us">
+        </div>
+        <div class="about-content">
+            <h2 class="section-title"><span class="hero-animate">Why Choose</span> <span>Nexus Digital</span></h2>
+            <p>We're a team of passionate digital marketers dedicated to helping businesses thrive in the digital landscape. With over 10 years of combined experience, we've helped hundreds of clients achieve their marketing goals.</p>
+            <ul class="about-features">
+                <li><i class="fas fa-check-circle"></i> Data-driven strategies</li>
+                <li><i class="fas fa-check-circle"></i> Transparent reporting</li>
+                <li><i class="fas fa-check-circle"></i> Dedicated account managers</li>
+                <li><i class="fas fa-check-circle"></i> Customized solutions</li>
+                <li><i class="fas fa-check-circle"></i> ROI-focused approach</li>
+                <li><i class="fas fa-check-circle"></i> Cutting-edge technology</li>
+            </ul>
+            
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="section-header">
+            <h2 class="section-title"><span>Our</span><span class="hero-animate"> Portfolio</span> </h2>
+            <p class="section-subtitle">See how we've helped businesses like yours achieve remarkable results</p>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="https://www.clickpost.ai/hubfs/featured%20images/Updated%20blog%20banner%20images%20Mar%2022/top-10-eCommerce-companies.png" alt="Portfolio Item">
+                <div class="portfolio-overlay">
+                    <h3>E-commerce Brand</h3>
+                    <p>Increased revenue by 320% in 6 months</p>
+                    <a href="#" class="portfolio-link">View Case Study</a>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://7t.ai/wp-content/uploads/2023/03/saas-business-market-evaliations-1100x550.jpg" alt="Portfolio Item">
+                <div class="portfolio-overlay">
+                    <h3>SaaS Company</h3>
+                    <p>Grew leads by 450% with content marketing</p>
+                    <a href="#" class="portfolio-link">View Case Study</a>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://media.licdn.com/dms/image/v2/C4E12AQG8_KhzWLHydA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1571861973779?e=2147483647&v=beta&t=r1IPCkVs9dSd2HuPodDzrOqOy-RLhsLThspk2pquxRc" alt="Portfolio Item">
+                <div class="portfolio-overlay">
+                    <h3>Local Business</h3>
+                    <p>5x more website visitors with local SEO</p>
+                    <a href="#" class="portfolio-link">View Case Study</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials & Contact Section -->
+    <section class="testimonials-contact" id="testimonials">
+        <div class="section-header">
+            <h2 class="section-title"> <span>Client</span><span class="hero-animate"> Testimonials</span></h2>
+            <p class="section-subtitle">Don't just take our word for it - hear from our satisfied clients</p>
+        </div>
+        <div class="testimonials-contact-flex">
+            <div class="testimonial-slider">
+                <div class="testimonial-slide active">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>Nexus Digital transformed our online presence. Our organic traffic increased by 275% in just 4 months, and we're now ranking for competitive keywords we never thought possible.</p>
+                        <div class="testimonial-author">
+                           
+                            <div>
+                                <h4>Sarah Johnson</h4>
+                                <p>CEO, TechStart Inc.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>The team at Nexus Digital took the time to understand our unique challenges and delivered a customized solution that exceeded our expectations. Our conversion rate is now at an all-time high.</p>
+                        <div class="testimonial-author">
+                            <!-- <img src="https://via.placeholder.com/80x80" alt="Client"> -->
+                            <div>
+                                <h4>Michael Chen</h4>
+                                <p>Marketing Director, RetailPro</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>We've worked with several agencies before, but none delivered results like Nexus Digital. Their data-driven approach and transparency set them apart in the industry.</p>
+                        <div class="testimonial-author">
+                            <!-- <img src="https://via.placeholder.com/80x80" alt="Client"> -->
+                            <div>
+                                <h4>Emily Rodriguez</h4>
+                                <p>Founder, WellnessCo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Your Phone">
+                    </div>
+                    <div class="form-group">
+                        <select required>
+                            <option value="" disabled selected>Interested In</option>
+                            <option value="seo">SEO Services</option>
+                            <option value="ppc">PPC Advertising</option>
+                            <option value="social">Social Media Marketing</option>
+                            <option value="content">Content Marketing</option>
+                            <option value="email">Email Marketing</option>
+                            <option value="full">Full Service</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+<!-- Clients Section -->
+<section class="clients">
+    <div class="container">
+        <p>Trusted by leading brands worldwide</p>
+        <div class="client-logos">
+            <img src="https://manuals.plus/wp-content/uploads/2021/03/Login-with-Amazon-Getting-Started-Guide-for-iOS-Version-2.1.2-4-scaled.jpg" alt="Amazon">
+            <img src="https://www.pngplay.com/wp-content/uploads/9/Microsoft-Logo-Transparent-Image.png" alt="Microsoft">
+            <img src="https://media.designrush.com/inspiration_images/765751/conversions/1-mobile.jpg" alt="Netflix">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung">
+            <img src="https://vectorsfile.com/file-view/apple-logo-desi.jpeg" alt="Apple">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASIAAACuCAMAAAClZfCTAAAAeFBMVEX///8AAAD29vb6+vrZ2dn8/Py9vb3c3NyamprIyMjp6ek0NDSnp6eBgYGPj4/g4OCgoKBbW1vx8fFKSkpERESysrJ3d3dWVlZwcHAuLi7U1NQjIyO3t7eIiIgUFBRmZmZGRkY8PDwxMTEZGRkeHh4LCwt8fHxxcXGlPLNpAAAD/klEQVR4nO3bCWKqMBAG4AYBWQVUcKultk97/xs+FbUsiSwCE+j/HYAMI2GSCb69AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8ORZ1ANJTTeoIKtEsup/SJRu5OkWf6XOy0Q9TsqGr0dS9vdEJA1gEhIOX8/yAMdejDGHG5H2ILH39wdjGmZBGYbCYdHyhubm32VlMOcMuDMZU4hA4Jltjwa725OuRLWMH6hjypk6QpId9ORp1MJcMsZA6iLS5Hh9v+WELGVZryu4cCXUQD5Z52t3Twz5c8hl2oWzOsUTUUVxNtvsl+3VwFOqIEtElGgmeZtUPWFosQUwJ9xoP8c/lhetdJj9sT7pKzNCvAVGurBU9srPpYTtZZtiFlcTkEA0/MY0vlhfItUS7Pd5bgqE11VgV0sOOLt1GnuseY++7H88Jiulh7NPvO5Ay/i0yu9dRLT3a8fLD1tLUsAf1HtuqtyEV011y08PYTIpVYs6jkKx7GU5TZ5yXT+LwTr8P4zg9AuyhoHkh9+WTiOWqYQ8m6ytFSUtM5DiTrIY9aN+9pGhiuvmFYcZKqhZDlpuK0+hmCG07WzxLz/klSLEgq0pNR9rF/mPqB09mV/LLyFjDfmV+3raLvlXYlRYddNpufakwG2+LV56b+9L0yFvDUo7ZiFs6IJpsjUN5es6rRFlrWIqfj7mFa6r+Z5X0nFeJLQzWOe1fLuzdi2tbz1nnLylwkrmGpTiFyF9YnczfCy0xkd0QZliiGPyx2YWUbD/+OZlXiXnFh6jJ20hTnapPz0Uk7zcDHNwfvt6ZuRcKN+1cvkTN6ApU/l1Ufo9aTnTkX0JgoUvZ6XjiR3AnVZ4jYcdQbFgz7EoR3kxJ41gx94ea6WEbfzA1LMUU39BKONn4xxVlFoNYJRZFz24q0Ivv1XPpiuunhzFX/n2YQNm75NPX58olUYqieO9O+Z6dT6YD1Zq8Zndcz1K+454a9O4TtJbnk4VGTuW3+BLbGNoiqKD6nqqJeKA1LKPh27cSiT4KeoHVWX42xnBrWMa0owRJ8WFrO7pJ0Unu4556OkgR9Z8z2tZ6ioLxzLCbllM0jhqWNa/XDXvqm7PnHYOKhznlxJ2ToRP1HGuS488Z3cgfxDaxpPpOux+vN0PGV8Py6hx+FR3HPMPunvSuSy1HtkoUadwOiUdbw/K2zRI0nE8WWjCrnx87HHwvsZ66R2I/f2aG/aqTo53kH7Z2peR76NQDNPpFkFCl91EQjnOfWlHp8igI/1IJ43PEhyF2NNI+R23mmpOewz4cYZ+suYnqrO//1bCDwHBUzC6uyRV1FAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwdv8BwhsphboMpa0AAAAASUVORK5CYII=" alt="Nike">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png" alt="Google">
+            <img src="data:image/png;base64,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" alt="Sony">
+        </div>
+    </div>
+</section>
+<!-- Floating Sphere Chatbot -->
+<div class="chatbot-sphere-container">
+    <div class="chatbot-sphere">
+      <i class="fas fa-comment-dots"></i>
+    </div>
+    <div class="chatbot-window">
+      <div class="chatbot-header">
+        <h3>Nexus Assistant</h3>
+        <button class="chatbot-close">&times;</button>
+      </div>
+      <div class="chatbot-messages">
+        <div class="chatbot-message bot">
+          <p>Hello! How can I help you today?</p>
+        </div>
+      </div>
+      <div class="chatbot-quick-questions">
+        <button class="quick-question" data-response="services">Services offered?</button>
+        <button class="quick-question" data-response="pricing">Pricing?</button>
+        <button class="quick-question" data-response="contact">Contact support</button>
+      </div>
+      <div class="chatbot-input">
+        <input type="text" placeholder="Type your message..." class="chatbot-text-input">
+        <button class="chatbot-send"><i class="fas fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-content">
+            <div class="footer-about">
+                <a href="#" class="logo">Nexus<span>Digital</span></a>
+                <p>We help businesses grow through innovative digital marketing strategies that deliver measurable results.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#footer">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-services">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">SEO Services</a></li>
+                    <li><a href="#">PPC Management</a></li>
+                    <li><a href="#">Social Media Marketing</a></li>
+                    <li><a href="#">Content Marketing</a></li>
+                    <li><a href="#">Email Marketing</a></li>
+                    <li><a href="#">Marketing Analytics</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <p>+1 (555) 123-4567</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>info@nexusdigital.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>123 Marketing Ave, Suite 500<br>San Francisco, CA 94107</p>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-newsletter">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter for the latest digital marketing tips and insights.</p>
+                <form>
+                    <input type="email" placeholder="Your Email" required>
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Nexus Digital. All Rights Reserved.</p>
+            <div class="footer-legal">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+body {
+    background: linear-gradient(120deg, #e6f0ff 0%, #f8f9fa 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.signup-container {
+    background: #fff;
+    padding: 40px 32px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 102, 255, 0.08), 0 1.5px 4px rgba(0,0,0,0.03);
+    width: 100%;
+    max-width: 370px;
+    text-align: center;
+}
+
+.signup-container h2 {
+    margin-bottom: 28px;
+    color: #0066ff;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: #212529;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #0066ff;
+    outline: none;
+}
+
+.signup-btn {
+    width: 100%;
+    padding: 12px;
+    background: #0066ff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+.signup-btn:hover {
+    background: #0052cc;
+}
+
+.switch-link {
+    margin-top: 18px;
+    color: #6c757d;
+    font-size: 15px;
+}
+
+.switch-link a {
+    color: #0066ff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.switch-link a:hover {
+    color: #0052cc;
+}
+
+.social-signup {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.google-btn, .facebook-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.google-btn {
+    background: #fff;
+    color: #4285F4;
+    border: 1.5px solid #e0e0e0;
+}
+
+.google-btn:hover {
+    background: #f1f7ff;
+}
+
+.google-btn i {
+    color: #EA4335;
+    font-size: 18px;
+}
+
+.facebook-btn {
+    background: #1877f3;
+    color: #fff;
+    border: 1.5px solid #1877f3;
+}
+
+.facebook-btn:hover {
+    background: #145db2;
+}
+
+.facebook-btn i {
+    color: #fff;
+    font-size: 18px;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 18px 0 18px 0;
+}
+
+.divider span {
+    color: #b0b0b0;
+    font-size: 15px;
+    padding: 0 16px;
+    background: #fff;
+    position: relative;
+    z-index: 1;
+}
+
+.divider:before, .divider:after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e0e0e0;
+    position: relative;
+    top: 0.5em;
+}
+
+.back-home {
+    position: absolute;
+    top: 28px;
+    left: 32px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #f4f8ff;
+    color: #0066ff;
+    padding: 8px 16px;
+    border-radius: 24px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0,102,255,0.06);
+    transition: background 0.2s, color 0.2s;
+    z-index: 10;
+}
+
+.back-home i {
+    font-size: 16px;
+}
+
+.back-home:hover {
+    background: #e6f0ff;
+    color: #0052cc;
+}
+
+@media (max-width: 500px) {
+    .back-home {
+        top: 12px;
+        left: 10px;
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+} 

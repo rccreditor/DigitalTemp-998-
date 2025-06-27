@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flexate | Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <style>
+    :root {
+      --primary-color: #1842ff;
+      --secondary-color: #f8f9fa;
+      --dark-color: #212529;
+      --light-color: #ffffff;
+      --success-color: #28a745;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--secondary-color);
+      color: var(--dark-color);
+    }
+
+    .navbar {
+      background-color: var(--light-color);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark-color);
+      font-weight: 500;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--primary-color), #6c5ce7);
+      color: var(--light-color);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .dashboard-container {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      min-height: calc(100vh - 200px);
+    }
+
+    .sidebar {
+      background-color: var(--light-color);
+      padding: 1.5rem;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .sidebar-menu {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar-menu li {
+      margin-bottom: 1rem;
+    }
+
+    .sidebar-menu a {
+      text-decoration: none;
+      color: var(--dark-color);
+      display: flex;
+      align-items: center;
+      padding: 0.5rem;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar-menu a:hover {
+      background-color: var(--secondary-color);
+      color: var(--primary-color);
+    }
+
+    .sidebar-menu a.active {
+      background-color: var(--primary-color);
+      color: var(--light-color);
+    }
+
+    .sidebar-menu i {
+      margin-right: 0.8rem;
+      width: 20px;
+      text-align: center;
+    }
+
+    .main-content {
+      padding: 2rem;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .metric-card {
+      background-color: var(--light-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .metric-card h3 {
+      margin-top: 0;
+      color: var(--primary-color);
+      font-size: 1rem;
+    }
+
+    .metric-card .value {
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 0.5rem 0;
+    }
+
+    .metric-card .change {
+      color: var(--success-color);
+      font-size: 0.9rem;
+    }
+
+    .chart-container {
+      background-color: var(--light-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      margin-bottom: 2rem;
+    }
+
+    .chart-placeholder {
+      background-color: var(--secondary-color);
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6c757d;
+      border-radius: 5px;
+    }
+
+    .recent-activity {
+      background-color: var(--light-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .activity-item {
+      display: flex;
+      align-items: center;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .activity-item:last-child {
+      border-bottom: none;
+    }
+
+    .activity-icon {
+      width: 40px;
+      height: 40px;
+      background-color: var(--primary-color);
+      color: var(--light-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1rem;
+    }
+
+    .activity-details {
+      flex: 1;
+    }
+
+    .activity-time {
+      color: #6c757d;
+      font-size: 0.8rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--primary-color);
+      color: var(--light-color);
+      padding: 0.6rem 1.2rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #3a56e0;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 1px solid var(--primary-color);
+      color: var(--primary-color);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--primary-color);
+      color: var(--light-color);
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .user-info img {
+      border-radius: 50%;
+      border: 2px solid var(--primary-color);
+      width: 40px;
+      height: 40px;
+    }
+
+    .user-info span {
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="logo">Flexate</div>
+    <div class="nav-links">
+      <a href="#">Dashboard</a>
+      <a href="#">Reports</a>
+      <a href="#">Campaigns</a>
+      <a href="#">Settings</a>
+      <div class="user-info">
+        <img src="https://i.pravatar.cc/40" alt="User Avatar" />
+        <span id="username"></span>
+        <button id="logout" class="btn btn-outline">Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <h1>Your Digital Performance Dashboard</h1>
+    <p>Monitor and optimize your digital marketing campaigns in real-time</p>
+  </div>
+
+  <div class="dashboard-container">
+    <div class="sidebar">
+      <ul class="sidebar-menu">
+        <li><a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+        <li><a href="#"><i class="fas fa-chart-line"></i> Analytics</a></li>
+        <li><a href="#"><i class="fas fa-bullhorn"></i> Campaigns</a></li>
+        <li><a href="#"><i class="fas fa-users"></i> Audience</a></li>
+        <li><a href="#"><i class="fas fa-envelope"></i> Email</a></li>
+        <li><a href="#"><i class="fas fa-ad"></i> Ads</a></li>
+        <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+      </ul>
+    </div>
+
+    <div class="main-content">
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <h3>Website Visitors</h3>
+          <div class="value">12,458</div>
+          <div class="change"><i class="fas fa-arrow-up"></i> 24.5% from last week</div>
+        </div>
+        <div class="metric-card">
+          <h3>Conversion Rate</h3>
+          <div class="value">3.2%</div>
+          <div class="change"><i class="fas fa-arrow-up"></i> 1.1% from last week</div>
+        </div>
+        <div class="metric-card">
+          <h3>Leads Generated</h3>
+          <div class="value">398</div>
+          <div class="change"><i class="fas fa-arrow-up"></i> 18% from last week</div>
+        </div>
+        <div class="metric-card">
+          <h3>ROI</h3>
+          <div class="value">5.8x</div>
+          <div class="change"><i class="fas fa-arrow-down"></i> 0.3x from last week</div>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <h2>Traffic Overview</h2>
+        <div class="chart-placeholder">
+          [Traffic Chart Would Appear Here]
+        </div>
+      </div>
+
+      <div class="recent-activity">
+        <h2>Recent Activity</h2>
+        <div class="activity-item">
+          <div class="activity-icon">
+            <i class="fas fa-ad"></i>
+          </div>
+          <div class="activity-details">
+            <strong>New ad campaign launched</strong>
+            <p>Summer Sale 2023 campaign is now active</p>
+          </div>
+          <div class="activity-time">2 hours ago</div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="activity-details">
+            <strong>Email newsletter sent</strong>
+            <p>Monthly newsletter delivered to 12,458 subscribers</p>
+          </div>
+          <div class="activity-time">1 day ago</div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-icon">
+            <i class="fas fa-thumbs-up"></i>
+          </div>
+          <div class="activity-details">
+            <strong>Landing page optimized</strong>
+            <p>Conversion rate increased by 12% after A/B testing</p>
+          </div>
+          <div class="activity-time">3 days ago</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🔐 Access Protection and Dynamic User Setup -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const user = JSON.parse(localStorage.getItem("nexusUser"));
+      if (!user) {
+        alert("Access denied! Please log in.");
+        window.location.href = "login.html";
+      } else {
+        document.getElementById("username").textContent = user.name;
+      }
+
+      document.getElementById("logout").addEventListener("click", () => {
+        localStorage.removeItem("nexusUser");
+        window.location.href = "index.html";
+      });
+    });
+  </script>
+</body>
+</html>

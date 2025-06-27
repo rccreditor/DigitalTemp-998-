@@ -1,0 +1,227 @@
+.contact-main {
+    padding-top: 100px;
+}
+
+.contact-hero {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    text-align: center;
+    padding: 100px 5%;
+    position: relative;
+}
+
+.contact-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.contact-hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.contact-content {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 5%;
+    display: flex;
+    gap: 50px;
+}
+
+.contact-info-expanded {
+    flex: 1;
+}
+
+.contact-form-expanded {
+    flex: 1;
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form-expanded h2 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    color: var(--dark);
+}
+
+.contact-form-expanded .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form-expanded input,
+.contact-form-expanded select,
+.contact-form-expanded textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.contact-form-expanded input:focus,
+.contact-form-expanded select:focus,
+.contact-form-expanded textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
+    outline: none;
+}
+
+.contact-form-expanded textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.contact-methods {
+    margin: 40px 0;
+}
+
+.contact-method {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.method-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--light-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: var(--primary);
+    font-size: 24px;
+}
+
+.contact-method h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: var(--dark);
+}
+
+.contact-method p {
+    color: var(--gray);
+    margin-bottom: 5px;
+}
+
+.social-contact {
+    margin-top: 50px;
+}
+
+.social-contact h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: var(--dark);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    width: 45px;
+    height: 45px;
+    background: var(--light-blue);
+    color: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.contact-map {
+    width: 100%;
+    margin: 50px 0;
+}
+
+.contact-team {
+    background: var(--light-blue);
+    padding: 80px 5%;
+    text-align: center;
+}
+
+.team-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
+
+.team-member {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    width: 280px;
+}
+
+.team-member img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 5px solid var(--light-blue);
+}
+
+.team-member h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: var(--dark);
+}
+
+.team-member p {
+    color: var(--gray);
+    margin-bottom: 15px;
+}
+
+.team-member a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.team-member a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+    .contact-content {
+        flex-direction: column;
+    }
+    
+    .contact-form-expanded {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .team-member {
+        width: 100%;
+        max-width: 350px;
+    }
+}

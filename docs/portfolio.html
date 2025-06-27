@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Portfolio | Nexus Digital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+    <!-- Header/Navbar -->
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">Nexus<span>Digital</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                <li><a href="index.html#testimonials">Testimonials</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div id="user-nav" class="user-info" style="display: none;">
+                <div class="user-avatar">
+                    <img src="https://i.pravatar.cc/40" alt="User Avatar" />
+                    <span id="username"></span>
+                    <div class="dropdown-menu">
+                        <a href="#" id="logout">Logout</a>
+                    </div>
+                </div>
+            </div>
+            <a href="login.html" id="login-btn" class="cta-button">Get Started</a>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Portfolio Main Content -->
+    <main class="portfolio-main">
+        <section class="portfolio-hero">
+            <h1>Our <span class="hero-animate">Work</span></h1>
+            <p>See how we've helped businesses achieve remarkable results</p>
+        </section>
+
+        <section class="portfolio-categories">
+            <div class="section-header">
+                <h2 class="section-title">Featured <span class="hero-animate">Projects</span></h2>
+                <p class="section-subtitle">Browse our successful case studies across industries</p>
+            </div>
+            <div class="category-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+                <button class="filter-btn" data-filter="saas">SaaS</button>
+                <button class="filter-btn" data-filter="local">Local Business</button>
+                <button class="filter-btn" data-filter="startup">Startups</button>
+            </div>
+        </section>
+
+        <section class="portfolio-grid-expanded">
+            <div class="portfolio-item-expanded" data-category="ecommerce">
+                <div class="portfolio-expanded-image">
+                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="E-commerce Project">
+                </div>
+                <div class="portfolio-expanded-content">
+                    <h3>E-commerce Fashion Brand</h3>
+                    <div class="portfolio-stats">
+                        <div class="stat-item">
+                            <h4>320%</h4>
+                            <p>Revenue Increase</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>6</h4>
+                            <p>Months</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>#1</h4>
+                            <p>Google Ranking</p>
+                        </div>
+                    </div>
+                    <p>We transformed this fashion retailer's online presence with a comprehensive digital marketing strategy that included SEO, PPC, and social media marketing. The results exceeded all expectations with a 320% revenue increase in just 6 months.</p>
+                    <h4>Strategies Used:</h4>
+                    <ul class="portfolio-strategies">
+                        <li>SEO Optimization</li>
+                        <li>Google Shopping Ads</li>
+                        <li>Instagram Influencer Campaigns</li>
+                        <li>Email Marketing Automation</li>
+                    </ul>
+                    <a href="contact.html" class="cta-button">Get Similar Results</a>
+                </div>
+            </div>
+
+            <div class="portfolio-item-expanded" data-category="saas">
+                <div class="portfolio-expanded-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="SaaS Project">
+                </div>
+                <div class="portfolio-expanded-content">
+                    <h3>Project Management SaaS</h3>
+                    <div class="portfolio-stats">
+                        <div class="stat-item">
+                            <h4>450%</h4>
+                            <p>Lead Increase</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>35%</h4>
+                            <p>Conversion Rate</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>8x</h4>
+                            <p>ROI</p>
+                        </div>
+                    </div>
+                    <p>For this SaaS company, we developed a content marketing strategy that positioned them as thought leaders in their space while driving qualified leads. The campaign resulted in a 450% increase in leads with a 35% conversion rate.</p>
+                    <h4>Strategies Used:</h4>
+                    <ul class="portfolio-strategies">
+                        <li>Content Marketing</li>
+                        <li>LinkedIn Advertising</li>
+                        <li>Webinar Series</li>
+                        <li>Marketing Automation</li>
+                    </ul>
+                    <a href="contact.html" class="cta-button">Get Similar Results</a>
+                </div>
+            </div>
+
+            <!-- More portfolio items -->
+        </section>
+
+        <section class="portfolio-stats">
+            <div class="section-header">
+                <h2 class="section-title">By The <span class="hero-animate">Numbers</span></h2>
+                <p class="section-subtitle">Our impact across all client projects</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>250+</h3>
+                    <p>Satisfied Clients</p>
+                </div>
+                <div class="stat-card">
+                    <h3>3.5M+</h3>
+                    <p>Leads Generated</p>
+                </div>
+                <div class="stat-card">
+                    <h3>$500M+</h3>
+                    <p>Revenue Generated</p>
+                </div>
+                <div class="stat-card">
+                    <h3>98%</h3>
+                    <p>Client Retention</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="footer-content">
+        <div class="footer-about">
+            <a href="index.html" class="logo">Nexus<span>Digital</span></a>
+            <p>We help businesses grow through innovative digital marketing strategies that deliver measurable results.</p>
+        </div>
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-services">
+            <h3>Services</h3>
+            <ul>
+                <li><a href="services.html">SEO Services</a></li>
+                <li><a href="services.html">PPC Management</a></li>
+                <li><a href="services.html">Social Media Marketing</a></li>
+                <li><a href="services.html">Content Marketing</a></li>
+                <li><a href="services.html">Email Marketing</a></li>
+                <li><a href="services.html">Marketing Analytics</a></li>
+            </ul>
+        </div>
+        <div class="footer-contact">
+            <h3>Contact</h3>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <p>+1 (555) 123-4567</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p>info@nexusdigital.com</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>123 Marketing Ave, Suite 500<br>San Francisco, CA 94107</p>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-newsletter">
+            <h3>Newsletter</h3>
+            <p>Subscribe to our newsletter for the latest digital marketing tips and insights.</p>
+            <form>
+                <input type="email" placeholder="Your Email" required>
+                <button type="submit"><i class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2023 Nexus Digital. All Rights Reserved.</p>
+        <div class="footer-legal">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+        </div>
+    </div>
+</footer>
+<script src="script.js"></script>
+<script>
+    // Portfolio filtering functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const filterValue = this.getAttribute('data-filter');
+                const portfolioItems = document.querySelectorAll('.portfolio-item-expanded');
+                
+                portfolioItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+</script>
+</body>
+</html>

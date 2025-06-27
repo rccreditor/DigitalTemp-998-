@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Nexus Digital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+    <!-- Header/Navbar -->
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">Nexus<span>Digital</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="index.html#testimonials">Testimonials</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <div id="user-nav" class="user-info" style="display: none;">
+                <div class="user-avatar">
+                    <img src="https://i.pravatar.cc/40" alt="User Avatar" />
+                    <span id="username"></span>
+                    <div class="dropdown-menu">
+                        <a href="#" id="logout">Logout</a>
+                    </div>
+                </div>
+            </div>
+            <a href="login.html" id="login-btn" class="cta-button">Get Started</a>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contact Main Content -->
+    <main class="contact-main">
+        <section class="contact-hero">
+            <h1>Let's <span class="hero-animate">Connect</span></h1>
+            <p>Ready to take your digital presence to the next level?</p>
+        </section>
+
+        <section class="contact-content">
+            <div class="contact-info-expanded">
+                <div class="section-header">
+                    <h2 class="section-title">Get In <span class="hero-animate">Touch</span></h2>
+                    <p class="section-subtitle">We'd love to hear about your project</p>
+                </div>
+                
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3>Call Us</h3>
+                        <p>+1 (555) 123-4567</p>
+                        <p>Mon-Fri: 9am-6pm EST</p>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email Us</h3>
+                        <p>info@nexusdigital.com</p>
+                        <p>Response within 24 hours</p>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Visit Us</h3>
+                        <p>123 Marketing Ave, Suite 500</p>
+                        <p>San Francisco, CA 94107</p>
+                    </div>
+                </div>
+                
+                <div class="social-contact">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form-expanded">
+                <h2>Send Us a Message</h2>
+                <form>
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Your Phone">
+                    </div>
+                    <div class="form-group">
+                        <select required>
+                            <option value="" disabled selected>What service are you interested in?</option>
+                            <option value="seo">SEO Services</option>
+                            <option value="ppc">PPC Advertising</option>
+                            <option value="social">Social Media Marketing</option>
+                            <option value="content">Content Marketing</option>
+                            <option value="email">Email Marketing</option>
+                            <option value="full">Full Service</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" rows="6" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="contact-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.538962143581!2d-122.4194159242667!3d37.77492997188347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan%20Francisco%2C%20CA%2C%20USA!5e0!3m2!1sen!2s!4v1690836773529!5m2!1sen!2s" 
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </section>
+
+        <section class="contact-team">
+            <div class="section-header">
+                <h2 class="section-title">Our <span class="hero-animate">Team</span></h2>
+                <p class="section-subtitle">Meet the experts who will handle your project</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson">
+                    <h3>Sarah Johnson</h3>
+                    <p>SEO Specialist</p>
+                    <a href="mailto:sarah@nexusdigital.com">sarah@nexusdigital.com</a>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen">
+                    <h3>Michael Chen</h3>
+                    <p>PPC Manager</p>
+                    <a href="mailto:michael@nexusdigital.com">michael@nexusdigital.com</a>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emily Rodriguez">
+                    <h3>Emily Rodriguez</h3>
+                    <p>Content Strategist</p>
+                    <a href="mailto:emily@nexusdigital.com">emily@nexusdigital.com</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <!-- Same footer as services.html -->
+    <footer id="footer">
+        <!-- Footer content from services.html -->
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
