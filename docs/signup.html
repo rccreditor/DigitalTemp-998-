@@ -1,79 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up | Nexus Digital</title>
-    <link rel="stylesheet" href="signup.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up | Nexus Digital</title>
+  <link rel="stylesheet" href="signup.css" />
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
-    <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
-    <div class="signup-container">
-        <h2>Create Your Account</h2>
-        <div class="social-signup">
-            <button class="google-btn" type="button"><i class="fab fa-google"></i> Sign up with Google</button>
-            <button class="facebook-btn" type="button"><i class="fab fa-facebook-f"></i> Sign up with Facebook</button>
-        </div>
-        <div class="divider"><span>or</span></div>
-        <form>
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Enter your name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Create Password</label>
-                <input type="password" id="password" name="password" placeholder="Create a password" required>
-            </div>
-            <div class="form-group">
-                <label for="confirm-password">Confirm Password</label>
-                <input type="password" id="confirm-password" name="confirmPassword" placeholder="Confirm your password" required>
-            </div>
-            <button type="submit" class="signup-btn">Sign Up</button>
-        </form>
-        <p class="switch-link">Already have an account? <a href="login.html">Login</a></p>
+  <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+  <div class="signup-container">
+    <h2>Create Your Account</h2>
+
+    <!-- Google Sign-In -->
+    <div class="social-signup">
+      <div id="g_id_onload"
+           data-client_id="928164827212-5rcs12rmhv5tlcp2ub0ok7p2g202o1f6.apps.googleusercontent.com"
+           data-callback="handleGoogleSignIn"
+           data-auto_prompt="false">
+      </div>
+      <div class="g_id_signin" data-type="standard" data-size="large"></div>
     </div>
- <script>
-  document.querySelector("form").addEventListener("submit", async (e) => {
-    e.preventDefault();
 
-    const name = document.querySelector("input[name='name']").value;
-    const email = document.querySelector("input[name='email']").value;
-    const password = document.querySelector("input[name='password']").value;
-    const confirmPassword = document.querySelector("input[name='confirmPassword']").value;
+    <div class="divider"><span>or</span></div>
 
-    if (password !== confirmPassword) {
-      alert("Passwords do not match");
-      return;
+    <!-- Regular Form Signup -->
+    <form>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Create Password</label>
+        <input type="password" id="password" name="password" placeholder="Create a password" required />
+      </div>
+      <div class="form-group">
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" id="confirm-password" name="confirmPassword" placeholder="Confirm your password" required />
+      </div>
+      <button type="submit" class="signup-btn">Sign Up</button>
+    </form>
+
+    <p class="switch-link">Already have an account? <a href="login.html">Login</a></p>
+  </div>
+
+  <!-- Script for both Signup and Google Login -->
+  <script>
+    // Regular form signup
+    document.querySelector("form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const name = document.querySelector("input[name='name']").value;
+      const email = document.querySelector("input[name='email']").value;
+      const password = document.querySelector("input[name='password']").value;
+      const confirmPassword = document.querySelector("input[name='confirmPassword']").value;
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match");
+        return;
+      }
+
+      try {
+        const res = await fetch("https://digitaltemp-998.onrender.com/api/auth/signup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name, email, password }),
+        });
+
+        const data = await res.json();
+        alert(data.message);
+
+        if (res.status === 201) {
+          localStorage.setItem("nexusUser", JSON.stringify({
+            name: name,
+            email: email,
+            avatar: "https://i.pravatar.cc/150?u=" + email  // fallback avatar
+          }));
+          window.location.href = "dashboard.html";
+        }
+      } catch (err) {
+        alert("Error: Could not sign up");
+        console.error(err);
+      }
+    });
+
+    // Google Sign-In handler
+    function handleGoogleSignIn(response) {
+      const token = response.credential;
+      const userData = parseJwt(token);
+
+      const user = {
+        name: userData.name,
+        email: userData.email,
+        avatar: userData.picture
+      };
+
+      localStorage.setItem("nexusUser", JSON.stringify(user));
+      window.location.href = "dashboard.html";
     }
 
-    try {
-      //const res = await fetch("http://localhost:5000/api/auth/signup", {
-      const res = await fetch("https://digitaltemp-998.onrender.com/api/auth/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name, email, password }),
-      });
-
-      const data = await res.json();
-      alert(data.message);
-
-      if (res.status === 201) {
-  localStorage.setItem("nexusUser", JSON.stringify(data.user)); // Save user to localStorage
-  window.location.href = "dashboard.html"; // ✅ Redirect to dashboard directly
-}
-
-    } catch (err) {
-      alert("Error: Could not sign up");
-      console.error(err);
+    // JWT decoder
+    function parseJwt(token) {
+      const base64 = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+      const json = decodeURIComponent(atob(base64).split('').map(c =>
+        '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+      return JSON.parse(json);
     }
-  });
-</script>
-
+  </script>
 </body>
-</html> 
+</html>
