@@ -16,6 +16,16 @@
 
   <div class="login-container">
     <h2>Login to Nexus Digital</h2>
+    <!-- Google Sign-In -->
+    <div class="social-signup">
+      <div id="g_id_onload"
+           data-client_id="928164827212-5rcs12rmhv5tlcp2ub0ok7p2g202o1f6.apps.googleusercontent.com"
+           data-callback="handleGoogleSignIn"
+           data-auto_prompt="false">
+      </div>
+      <div class="g_id_signin" data-type="standard" data-size="large"></div>
+    </div>
+    <div class="divider"><span>or</span></div>
     <form>
       <div class="form-group">
         <label for="email">Email</label>
@@ -61,6 +71,29 @@
         console.error(err);
       }
     });
+
+    // Google Sign-In handler
+    function handleGoogleSignIn(response) {
+      const token = response.credential;
+      const userData = parseJwt(token);
+
+      const user = {
+        name: userData.name,
+        email: userData.email,
+        avatar: userData.picture
+      };
+
+      localStorage.setItem("nexusUser", JSON.stringify(user));
+      window.location.href = "dashboard.html";
+    }
+
+    // JWT decoder
+    function parseJwt(token) {
+      const base64 = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+      const json = decodeURIComponent(atob(base64).split('').map(c =>
+        '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+      return JSON.parse(json);
+    }
   </script>
 </body>
 </html>
