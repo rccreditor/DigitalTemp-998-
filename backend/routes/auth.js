@@ -1,6 +1,8 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
+const passport = require("passport");
+const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
 
 const router = express.Router();
 
@@ -45,5 +47,21 @@ router.post('/login', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+
+// LinkedIn OAuth setup
+router.get('/linkedin', passport.authenticate('linkedin'));
+
+router.get('/linkedin/callback',
+    passport.authenticate('linkedin', {
+        failureRedirect: '/login',
+        session: false, // or true if using express-session
+    }),
+    async (req, res) => {
+        // You can generate a JWT here if needed:
+        // const token = jwt.sign({ userId: req.user._id }, process.env.JWT_SECRET);
+        res.redirect('/dashboard'); // or send token with res.json({ token })
+    }
+);
+
 
 module.exports = router;

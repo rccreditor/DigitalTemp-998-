@@ -19,5 +19,29 @@ const UserSchema = new mongoose.Schema({
     default: Date.now
   }
 });
+const LinkedInUserSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  linkedinId: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  avatar: {
+    type: String
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
+});
+
 
 module.exports = mongoose.model('User', UserSchema);
