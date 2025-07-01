@@ -5,7 +5,8 @@ const User = require("./models/User"); // Adjust path if needed
 passport.use(new LinkedInStrategy({
     clientID: process.env.LINKEDIN_CLIENT_ID,
     clientSecret: process.env.LINKEDIN_CLIENT_SECRET,
-    callbackURL: "/api/auth/linkedin/callback",
+    callbackURL: "https://digitaltemp-998.onrender.com/api/auth/linkedin/callback"
+,
     scope: ['email', 'profile', 'openid'],
 }, async (accessToken, refreshToken, profile, done) => {
     try {
