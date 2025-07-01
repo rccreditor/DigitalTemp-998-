@@ -15,25 +15,36 @@
 
   <div class="login-container">
     <h2>Login to Nexus Digital</h2>
+
     <!-- Social Sign-In Options -->
     <div class="social-signup">
+      <!-- Google Sign-In (iframe-based) -->
       <div class="social-button-wrapper">
-      <div id="g_id_onload"
-         data-client_id="928164827212-5rcs12rmhv5tlcp2ub0ok7p2g202o1f6.apps.googleusercontent.com"
-         data-callback="handleGoogleSignIn"
-         data-auto_prompt="false">
-       </div>
-    <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline"></div>
-  </div>
+        <div id="g_id_onload"
+             data-client_id="928164827212-5rcs12rmhv5tlcp2ub0ok7p2g202o1f6.apps.googleusercontent.com"
+             data-callback="handleGoogleSignIn"
+             data-auto_prompt="false">
+        </div>
+        <div class="g_id_signin"
+             data-type="standard"
+             data-size="large"
+             data-theme="outline"
+             data-logo_alignment="left"
+             data-shape="rectangular">
+        </div>
+      </div>
 
-  <div class="social-button-wrapper">
-    <a href="https://digitaltemp-998.onrender.com/api/auth/linkedin" class="linkedin-btn">
-      <i class="fab fa-linkedin"></i> Sign in with LinkedIn
-    </a>
-  </div>
-</div>
+      <!-- LinkedIn Sign-In -->
+      <div class="social-button-wrapper">
+        <a href="https://digitaltemp-998.onrender.com/api/auth/linkedin" class="linkedin-btn">
+          <i class="fab fa-linkedin"></i> Sign in with LinkedIn
+        </a>
+      </div>
+    </div>
 
     <div class="divider"><span>or</span></div>
+
+    <!-- Email/Password Login Form -->
     <form>
       <div class="form-group">
         <label for="email">Email</label>
@@ -45,9 +56,11 @@
       </div>
       <button type="submit" class="login-btn">Login</button>
     </form>
+
     <p class="switch-link">Don't have an account? <a href="signup.html">Sign up</a></p>
   </div>
 
+  <!-- Script for login handling -->
   <script>
     document.querySelector("form").addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -56,7 +69,7 @@
       const password = document.querySelector("input[name='password']").value;
 
       try {
-          const res = await fetch("https://digitaltemp-998.onrender.com/api/auth/login", {
+        const res = await fetch("https://digitaltemp-998.onrender.com/api/auth/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
