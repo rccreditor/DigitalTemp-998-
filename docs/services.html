@@ -64,7 +64,11 @@
                         <li><i class="fas fa-check"></i> Link building</li>
                         <li><i class="fas fa-check"></i> Local SEO</li>
                     </ul>
-                    <a href="contact.html" class="cta-button">Get SEO Services</a>
+                   <!-- SEO Optimization - One-Time -->
+<p><strong>Price:</strong> ₹4,999</p>
+<p><strong>Type:</strong> One-time Payment</p>
+<button class="cta-button buy-btn" data-name="SEO Optimization" data-price="4999" data-type="one-time">Buy Now</button>
+
                 </div>
                 <div class="service-expanded-image">
                     <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="SEO Services">
@@ -85,7 +89,11 @@
                         <li><i class="fas fa-check"></i> Remarketing campaigns</li>
                         <li><i class="fas fa-check"></i> Conversion tracking</li>
                     </ul>
-                    <a href="contact.html" class="cta-button">Get PPC Services</a>
+                    <!-- PPC Advertising - Subscription -->
+<p><strong>Price:</strong> ₹2,999/month</p>
+<p><strong>Type:</strong> Subscription</p>
+<button class="cta-button buy-btn" data-name="PPC Advertising" data-price="2999" data-type="subscription">Subscribe</button>
+
                 </div>
                 <div class="service-expanded-image">
                     <img src="https://images.unsplash.com/photo-1664575602554-2087b04935a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80" alt="PPC Services">
@@ -332,7 +340,42 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         </div>
     </footer>
-
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const buyButtons = document.querySelectorAll('.buy-btn');
+      
+          buyButtons.forEach(button => {
+            button.addEventListener('click', function () {
+              const name = this.dataset.name;
+              const price = this.dataset.price;
+              const type = this.dataset.type;
+      
+              const user = JSON.parse(localStorage.getItem('nexusUser'));
+              if (!user) {
+                alert("Please log in to buy services.");
+                return;
+              }
+      
+              const order = {
+                name,
+                price,
+                type,
+                date: new Date().toLocaleDateString()
+              };
+      
+              let orders = JSON.parse(localStorage.getItem('userOrders')) || {};
+              if (!orders[user.email]) {
+                orders[user.email] = [];
+              }
+              orders[user.email].push(order);
+              localStorage.setItem('userOrders', JSON.stringify(orders));
+      
+              alert("✅ Added to orders!");
+            });
+          });
+        });
+      </script>
+      
     
     <script src="script.js"></script>
 </body>

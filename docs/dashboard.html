@@ -279,13 +279,10 @@
     <div class="sidebar">
       <ul class="sidebar-menu">
         <li><a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-        <li><a href="#"><i class="fas fa-chart-line"></i> Analytics</a></li>
-        <li><a href="#"><i class="fas fa-bullhorn"></i> Campaigns</a></li>
-        <li><a href="#"><i class="fas fa-users"></i> Audience</a></li>
-        <li><a href="#"><i class="fas fa-envelope"></i> Email</a></li>
-        <li><a href="#"><i class="fas fa-ad"></i> Ads</a></li>
-        <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
-      </ul>
+        <li><a href="#"><i class="fas fa-box"></i> Orders</a></li>
+        <li><a href="#"><i class="fas fa-headset"></i> Contact</a></li>
+        <li><a href="#"><i class="fas fa-user-cog"></i> Settings</a></li>
+      </ul>      
     </div>
 
     <div class="main-content">
@@ -320,7 +317,11 @@
 </div>
 
       <div class="recent-activity">
+        <h2>Your Purchased Services</h2>
+        <ul id="service-list" style="padding-left: 1.5rem;"></ul>
+        
         <h2>Recent Activity</h2>
+
         <div class="activity-item">
           <div class="activity-icon">
             <i class="fas fa-ad"></i>
@@ -357,145 +358,176 @@
 
   <!-- 🔐 Access Protection and Dynamic User Setup -->
   <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const user = JSON.parse(localStorage.getItem("nexusUser"));
-    if (!user) {
-      alert("Access denied! Please log in.");
-      window.location.href = "login.html";
-    } else {
-      // Set username text
-      document.getElementById("username").textContent = user.name;
-
-      // Set avatar (if selected)
-      const avatar = localStorage.getItem("selectedAvatar");
-      if (avatar) {
-        document.getElementById("avatar-img").src = avatar;
-      }
-    }
-
-    // Handle logout
-    document.getElementById("logout").addEventListener("click", () => {
-      localStorage.removeItem("nexusUser");
-      window.location.href = "index.html";
-    });
-
-    // Redirect to profile settings on avatar click
-    document.getElementById("avatar-img").addEventListener("click", () => {
-      window.location.href = "profile.html";
-    });
-  });
-
-  // Random Chat data
-  // Generate random traffic data
-function generateRandomData(days = 30, min = 1000, max = 5000) {
-  return Array.from({length: days}, () => Math.floor(Math.random() * (max - min + 1)) + min);
-}
-
-// Create traffic chart
-function createTrafficChart() {
-  const ctx = document.getElementById('trafficChart').getContext('2d');
-  const days = 30;
-  const dates = Array.from({length: days}, (_, i) => {
-    const date = new Date();
-    date.setDate(date.getDate() - (days - i - 1));
-    return date.toLocaleDateString('en-US', {month: 'short', day: 'numeric'});
-  });
-
-  const trafficData = generateRandomData(days);
-  const mobileData = generateRandomData(days, 500, 3000);
-  const desktopData = trafficData.map((val, i) => val - mobileData[i]);
-
-  new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: dates,
-      datasets: [
-        {
-          label: 'Total Visitors',
-          data: trafficData,
-          borderColor: '#1842ff',
-          backgroundColor: 'rgba(24, 66, 255, 0.1)',
-          borderWidth: 2,
-          tension: 0.3,
-          fill: true
-        },
-        {
-          label: 'Desktop',
-          data: desktopData,
-          borderColor: '#00c853',
-          backgroundColor: 'rgba(0, 200, 83, 0.1)',
-          borderWidth: 2,
-          tension: 0.3
-        },
-        {
-          label: 'Mobile',
-          data: mobileData,
-          borderColor: '#ff4081',
-          backgroundColor: 'rgba(255, 64, 129, 0.1)',
-          borderWidth: 2,
-          tension: 0.3
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          position: 'top',
-        },
-        tooltip: {
-          mode: 'index',
-          intersect: false,
-        }
-      },
-      scales: {
-        y: {
-          beginAtZero: false,
-          grid: {
-            drawBorder: false
-          }
-        },
-        x: {
-          grid: {
-            display: false
-          }
-        }
-      }
-    }
-  });
-}
-
-// Call the function when DOM is loaded
-document.addEventListener("DOMContentLoaded", function() {
-  // ... your existing DOMContentLoaded code ...
+    async function loadUserData() {
+      const token = localStorage.getItem("token");
   
-  createTrafficChart();
-});
-
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const user = JSON.parse(localStorage.getItem("nexusUser"));
-
-    if (!user) {
-      alert("Access denied! Please log in.");
-      window.location.href = "login.html";
-    } else {
-      document.getElementById("username").textContent = user.name;
-      document.getElementById("avatar-img").src = user.avatar || "https://i.pravatar.cc/150?img=1";
+      if (!token) {
+        alert("Access denied! Please log in.");
+        window.location.href = "login.html";
+        return;
+      }
+  
+      try {
+        const res = await fetch("https://digitaltemp-998.onrender.com/api/users/me", {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+  
+        if (!res.ok) throw new Error("Token expired");
+  
+        const user = await res.json();
+        localStorage.setItem("nexusUser", JSON.stringify(user));
+  
+        // Set UI with user info
+        document.getElementById("username").textContent = user.fullName || user.name || "User";
+        document.getElementById("avatar-img").src = user.avatar || "https://i.pravatar.cc/40";
+      } catch (err) {
+        console.error("Fetch failed:", err.message);
+        localStorage.clear();
+        alert("Session expired. Please log in again.");
+        window.location.href = "login.html";
+      }
     }
-
-    document.getElementById("logout").addEventListener("click", () => {
-      localStorage.removeItem("nexusUser");
-      window.location.href = "index.html";
+  
+    async function fetchAndRenderPurchasedServices() {
+      const user = JSON.parse(localStorage.getItem("nexusUser"));
+      if (!user) return;
+  
+      const serviceList = document.getElementById("service-list");
+  
+      try {
+        const response = await fetch(`https://digitaltemp-998.onrender.com/api/user/${user._id}`);
+        const data = await response.json();
+  
+        if (data.purchasedServices && data.purchasedServices.length > 0) {
+          data.purchasedServices.forEach(service => {
+            const li = document.createElement("li");
+            li.style.marginBottom = "10px";
+            li.innerHTML = `
+              <strong>${service.name}</strong> – ₹${service.price}
+              ${service.isSubscription && service.subscriptionEnd
+                ? `<br><small style="color: gray;">Subscription ends on: <strong style="color: red;">${new Date(service.subscriptionEnd).toLocaleDateString()}</strong></small>`
+                : `<br><small style="color: green;">One-time purchase</small>`}
+            `;
+            serviceList.appendChild(li);
+          });
+        } else {
+          serviceList.innerHTML = "<li>No services purchased yet.</li>";
+        }
+      } catch (err) {
+        console.warn("Backend fetch failed, trying localStorage...");
+  
+        const ordersData = JSON.parse(localStorage.getItem('userOrders')) || {};
+        const userOrders = ordersData[user.email] || [];
+  
+        if (userOrders.length > 0) {
+          userOrders.forEach(order => {
+            const li = document.createElement("li");
+            li.style.marginBottom = "10px";
+            li.innerHTML = `
+              <strong>${order.name}</strong> – ₹${order.price}
+              ${order.type === "subscription"
+                ? `<br><small style="color: gray;">Subscription active</small>`
+                : `<br><small style="color: green;">One-time purchase</small>`}
+            `;
+            serviceList.appendChild(li);
+          });
+        } else {
+          serviceList.innerHTML = "<li>No services purchased yet.</li>";
+        }
+      }
+    }
+  
+    function generateRandomData(days = 30, min = 1000, max = 5000) {
+      return Array.from({length: days}, () => Math.floor(Math.random() * (max - min + 1)) + min);
+    }
+  
+    function createTrafficChart() {
+      const ctx = document.getElementById('trafficChart').getContext('2d');
+      const days = 30;
+      const dates = Array.from({length: days}, (_, i) => {
+        const date = new Date();
+        date.setDate(date.getDate() - (days - i - 1));
+        return date.toLocaleDateString('en-US', {month: 'short', day: 'numeric'});
+      });
+  
+      const trafficData = generateRandomData(days);
+      const mobileData = generateRandomData(days, 500, 3000);
+      const desktopData = trafficData.map((val, i) => val - mobileData[i]);
+  
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: dates,
+          datasets: [
+            {
+              label: 'Total Visitors',
+              data: trafficData,
+              borderColor: '#1842ff',
+              backgroundColor: 'rgba(24, 66, 255, 0.1)',
+              borderWidth: 2,
+              tension: 0.3,
+              fill: true
+            },
+            {
+              label: 'Desktop',
+              data: desktopData,
+              borderColor: '#00c853',
+              backgroundColor: 'rgba(0, 200, 83, 0.1)',
+              borderWidth: 2,
+              tension: 0.3
+            },
+            {
+              label: 'Mobile',
+              data: mobileData,
+              borderColor: '#ff4081',
+              backgroundColor: 'rgba(255, 64, 129, 0.1)',
+              borderWidth: 2,
+              tension: 0.3
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'top' },
+            tooltip: { mode: 'index', intersect: false }
+          },
+          scales: {
+            y: { beginAtZero: false, grid: { drawBorder: false } },
+            x: { grid: { display: false } }
+          }
+        }
+      });
+    }
+  
+    document.addEventListener("DOMContentLoaded", () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get('token');
+      if (token) {
+        localStorage.setItem('token', token);
+        window.history.replaceState({}, document.title, '/dashboard.html');
+      }
+  
+      loadUserData();
+      fetchAndRenderPurchasedServices();
+      createTrafficChart();
+  
+      // Logout handler
+      document.getElementById("logout").addEventListener("click", () => {
+        localStorage.clear();
+        window.location.href = "index.html";
+      });
+  
+      // Avatar click -> profile
+      document.getElementById("avatar-img").addEventListener("click", () => {
+        window.location.href = "profile.html";
+      });
     });
-
-    document.getElementById("avatar-img").addEventListener("click", () => {
-      window.location.href = "profile.html";
-    });
-  });
-
-</script>
+  </script>
+  
 
 </body>
 </html>
