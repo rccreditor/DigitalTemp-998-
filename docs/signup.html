@@ -102,7 +102,25 @@
         avatar: userData.picture
       };
 
-      localStorage.setItem("nexusUser", JSON.stringify(user));
+     fetch("https://digitaltemp-998.onrender.com/api/auth/google-login", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ credential: token })
+})
+.then(res => res.json())
+.then(data => {
+  if (data.user) {
+    localStorage.setItem("nexusUser", JSON.stringify(data.user));
+    window.location.href = "dashboard.html";
+  } else {
+    alert("Google sign-in failed.");
+  }
+})
+.catch(err => {
+  console.error("Google login error:", err);
+  alert("Login failed.");
+});
+ 
       window.location.href = "dashboard.html";
     }
 
