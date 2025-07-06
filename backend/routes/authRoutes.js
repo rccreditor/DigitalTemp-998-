@@ -29,7 +29,7 @@ router.post('/signup', async (req, res) => {
 
     res.status(201).json({
       message: 'User created successfully',
-      user: { fullName: newUser.fullName, email: newUser.email }
+      user: { name: newUser.name, email: newUser.email }
     });
   } catch (err) {
     console.error(err);
@@ -54,7 +54,7 @@ router.post('/login', async (req, res) => {
 
     res.status(200).json({
       message: 'Login successful',
-      user: { fullName: user.fullName, email: user.email }
+      user: { name: user.name, email: user.email }
     });
   } catch (err) {
     res.status(500).json({ message: 'Server error' });
