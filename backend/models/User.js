@@ -27,7 +27,7 @@ const UserSchema = new mongoose.Schema({
   avatar: String,
   authProvider: {
     type: String,
-    enum: ['google', 'linkedin', 'email'],
+    enum: ['google', 'linkedin', 'email', 'local'],
     required: true
   },
   purchasedServices: [PurchasedServiceSchema],
