@@ -71,7 +71,8 @@ router.get('/linkedin/callback',
     failureRedirect: '/login',
     session: false
   }),
-  (req, res) => {
+ (req, res) => {
+    const token = generateToken(req.user);
     res.redirect(`${process.env.CLIENT_URL}/dashboard.html?token=${token}`);
   }
 );
@@ -87,6 +88,7 @@ router.get('/google/callback',
     session: false
   }),
   (req, res) => {
+    const token = generateToken(req.user);
     res.redirect(`${process.env.CLIENT_URL}/dashboard.html?token=${token}`);
   }
 );
