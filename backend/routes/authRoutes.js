@@ -9,7 +9,7 @@ const generateToken = require('../utils/generateToken');
 // Local Signup
 // --------------------
 router.post('/signup', async (req, res) => {
-  const { fullName, email, password } = req.body;
+  const { name, email, password } = req.body;
 
   try {
     const existingUser = await User.findOne({ email });
@@ -18,7 +18,7 @@ router.post('/signup', async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({
-      fullName,
+      name,
       email,
       authProvider: 'local',
       password: hashedPassword,
